@@ -13,10 +13,11 @@ class ViewController: UIViewController, UITextFieldDelegate {
     @IBOutlet weak var resultLabel: UILabel!
     @IBOutlet weak var inputTextField: UITextField!
     @IBOutlet weak var resultHistoryScrollView: UIScrollView!
-    
+
     override func viewDidLoad() {
+
         super.viewDidLoad()
-        // Do any additional setup after loading the view.
+
     }
 
     /**
@@ -24,6 +25,10 @@ class ViewController: UIViewController, UITextFieldDelegate {
      */
     func textFieldShouldReturn(_ textField: UITextField) -> Bool {
         
+        guard let input = Input(textField.text!) else {
+            return false
+        }
+
         self.inputTextField.resignFirstResponder()
         
         return true;
