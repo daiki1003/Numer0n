@@ -13,6 +13,8 @@ class ViewController: UIViewController, UITextFieldDelegate {
     @IBOutlet weak var resultLabel: UILabel!
     @IBOutlet weak var inputTextField: UITextField!
     @IBOutlet weak var resultHistoryScrollView: UIScrollView!
+    
+    var answer: Answer = Answer()
 
     override func viewDidLoad() {
 
@@ -22,15 +24,14 @@ class ViewController: UIViewController, UITextFieldDelegate {
     
     func setInput(_ input: Input) {
 
-        if let result = Result(input) {
+        if let result = Result(input, self.answer) {
             self.setResult(result)
         }
 
     }
-    
-    func setResult(_ result: Result) {
 
-        self.resultLabel.text = "inputed";
+    func setResult(_ result: Result) {
+        self.resultLabel.text = "\(result.eatCount)Eat \(result.biteCount)Bite";
     }
 
     /**

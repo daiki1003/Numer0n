@@ -34,4 +34,8 @@ class Input {
         
         return true
     }
+    
+    subscript (index: Int) -> Int {
+        return self.numbers[index]
+    }
 }

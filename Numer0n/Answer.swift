@@ -36,4 +36,8 @@ class Answer {
         return numberCandidate
 
     }
+    
+    subscript (index: Int) -> Int {
+        return self.numbers[index]
+    }
 }
