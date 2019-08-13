@@ -10,31 +10,53 @@ import Foundation
 
 class Input {
 
+    var error: InputError? = nil
     var numbers:Array<Int> = []
 
-    init?(_ input: String) {
-        
-        if !self.validate(input) { return nil }
+    init(_ input: String) {
 
-        for numberChar in input {
-            self.numbers.append(Int(String(numberChar))!)
-        }
-    }
-    
-    // 入力値のバリデーション
-    private func validate(_ input: String) -> Bool {
-        
-        if input.count != Answer.digits { return false }
+        self.updateError(input)
 
-        for digit in 0 ..< Answer.digits {
-            for nextDigit in digit + 1 ..< Answer.digits {
-                if input[digit] == input[nextDigit] { return false }
+        if error == nil {
+            for numberChar in input {
+                self.numbers.append(Int(String(numberChar))!)
             }
         }
-        
-        return true
+
     }
     
+    private func updateError(_ input: String) {
+
+        if input.count != Answer.digits {
+
+            self.error = .WrongDigit
+            return
+
+        }
+        
+        for character in input {
+
+            if Int(String(character)) == nil {
+
+                self.error = .Uninterpretable
+                return
+
+            }
+
+        }
+        
+        for digit in 0 ..< Answer.digits {
+            for nextDigit in digit + 1 ..< Answer.digits {
+                if input[digit] == input[nextDigit] {
+                    
+                    self.error = .UnfollowedPolicy
+                    return
+                    
+                }
+            }
+        }
+    }
+
     subscript (index: Int) -> Int {
         return self.numbers[index]
     }

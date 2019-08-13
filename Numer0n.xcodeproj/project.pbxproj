@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		245B17262301144100C0508F /* String+Subscript.swift in Sources */ = {isa = PBXBuildFile; fileRef = 245B17252301144100C0508F /* String+Subscript.swift */; };
+		245B172823011E6400C0508F /* InputError.swift in Sources */ = {isa = PBXBuildFile; fileRef = 245B172723011E6400C0508F /* InputError.swift */; };
 		24EA967122FC776000574A18 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 24EA967022FC776000574A18 /* AppDelegate.swift */; };
 		24EA967322FC776000574A18 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 24EA967222FC776000574A18 /* ViewController.swift */; };
 		24EA967622FC776000574A18 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 24EA967422FC776000574A18 /* Main.storyboard */; };
@@ -20,6 +21,7 @@
 
 /* Begin PBXFileReference section */
 		245B17252301144100C0508F /* String+Subscript.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "String+Subscript.swift"; sourceTree = "<group>"; };
+		245B172723011E6400C0508F /* InputError.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InputError.swift; sourceTree = "<group>"; };
 		24EA966D22FC776000574A18 /* Numer0n.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Numer0n.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		24EA967022FC776000574A18 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		24EA967222FC776000574A18 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
@@ -82,6 +84,7 @@
 				24EA967222FC776000574A18 /* ViewController.swift */,
 				24EA969E22FD503D00574A18 /* Answer.swift */,
 				24EA968222FC7F3D00574A18 /* Input.swift */,
+				245B172723011E6400C0508F /* InputError.swift */,
 				24EA968622FD1C4C00574A18 /* Result.swift */,
 				24EA967422FC776000574A18 /* Main.storyboard */,
 				24EA967722FC776300574A18 /* Assets.xcassets */,
@@ -164,6 +167,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				245B17262301144100C0508F /* String+Subscript.swift in Sources */,
+				245B172823011E6400C0508F /* InputError.swift in Sources */,
 				24EA968322FC7F3E00574A18 /* Input.swift in Sources */,
 				24EA967322FC776000574A18 /* ViewController.swift in Sources */,
 				24EA969F22FD503D00574A18 /* Answer.swift in Sources */,

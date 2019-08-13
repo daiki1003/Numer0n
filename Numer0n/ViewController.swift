@@ -11,6 +11,7 @@ import UIKit
 class ViewController: UIViewController, UITextFieldDelegate {
 
     @IBOutlet weak var resultLabel: UILabel!
+    @IBOutlet weak var errorLabel: UILabel!
     @IBOutlet weak var inputTextField: UITextField!
     @IBOutlet weak var resultHistoryScrollView: UIScrollView!
     
@@ -45,14 +46,21 @@ class ViewController: UIViewController, UITextFieldDelegate {
      * UITextFieldDelegate
      */
     func textFieldShouldReturn(_ textField: UITextField) -> Bool {
-        
-        guard let input = Input(textField.text!) else {
+
+        self.resultLabel.text = ""
+        self.errorLabel.text = ""
+
+        let input: Input = Input(textField.text!)
+        if let error = input.error {
+
+            self.errorLabel.text = error.toString()
             return false
+
         }
 
         self.inputTextField.resignFirstResponder()
         self.setInput(input)
-        
+
         return true;
     }
 }
