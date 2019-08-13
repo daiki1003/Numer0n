@@ -31,7 +31,14 @@ class ViewController: UIViewController, UITextFieldDelegate {
     }
 
     func setResult(_ result: Result) {
-        self.resultLabel.text = "\(result.eatCount)Eat \(result.biteCount)Bite";
+
+        if result.isCorrect() {
+            self.resultLabel.text = "正解！"
+        }
+        else {
+            self.resultLabel.text = "\(result.eatCount)Eat \(result.biteCount)Bite";
+        }
+
     }
 
     /**

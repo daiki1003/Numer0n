@@ -34,6 +34,10 @@ class Result {
         self.updateCounts()
     }
     
+    func isCorrect() -> Bool {
+        return self.eatCount == Answer.digits
+    }
+    
     private func updateCounts() {
         
         guard let _ = self.input else { return }
