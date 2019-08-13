@@ -25,6 +25,12 @@ class Input {
     private func validate(_ input: String) -> Bool {
         
         if input.count != Answer.digits { return false }
+
+        for digit in 0 ..< Answer.digits {
+            for nextDigit in digit + 1 ..< Answer.digits {
+                if input[digit] == input[nextDigit] { return false }
+            }
+        }
         
         return true
     }
