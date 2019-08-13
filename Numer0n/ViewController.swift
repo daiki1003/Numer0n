@@ -19,6 +19,19 @@ class ViewController: UIViewController, UITextFieldDelegate {
         super.viewDidLoad()
 
     }
+    
+    func setInput(_ input: Input) {
+
+        if let result = Result(input) {
+            self.setResult(result)
+        }
+
+    }
+    
+    func setResult(_ result: Result) {
+
+        self.resultLabel.text = "inputed";
+    }
 
     /**
      * UITextFieldDelegate
@@ -30,6 +43,7 @@ class ViewController: UIViewController, UITextFieldDelegate {
         }
 
         self.inputTextField.resignFirstResponder()
+        self.setInput(input)
         
         return true;
     }
