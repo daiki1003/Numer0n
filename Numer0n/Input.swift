@@ -9,15 +9,23 @@
 import Foundation
 
 class Input {
-    
+
     var numbers:Array<Int> = []
-    
+
     init?(_ input: String) {
         
-        if input.count != 4 { return nil }
-        
+        if !self.validate(input) { return nil }
+
         for numberChar in input {
             self.numbers.append(Int(String(numberChar))!)
         }
+    }
+    
+    // 入力値のバリデーション
+    private func validate(_ input: String) -> Bool {
+        
+        if input.count != Answer.digits { return false }
+        
+        return true
     }
 }
