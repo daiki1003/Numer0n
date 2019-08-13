@@ -8,7 +8,7 @@
 
 import UIKit
 
-class ViewController: UIViewController {
+class ViewController: UIViewController, UITextFieldDelegate {
 
     @IBOutlet weak var resultLabel: UILabel!
     @IBOutlet weak var inputTextField: UITextField!
@@ -19,6 +19,14 @@ class ViewController: UIViewController {
         // Do any additional setup after loading the view.
     }
 
-
+    /**
+     * UITextFieldDelegate
+     */
+    func textFieldShouldReturn(_ textField: UITextField) -> Bool {
+        
+        self.inputTextField.resignFirstResponder()
+        
+        return true;
+    }
 }
 
