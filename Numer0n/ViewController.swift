@@ -8,14 +8,19 @@
 
 import UIKit
 
-class ViewController: UIViewController, UITextFieldDelegate {
+class ViewController: UIViewController, UITextFieldDelegate, UITableViewDataSource {
 
     @IBOutlet weak var resultLabel: UILabel!
     @IBOutlet weak var errorLabel: UILabel!
     @IBOutlet weak var inputTextField: UITextField!
-    @IBOutlet weak var resultHistoryScrollView: UIScrollView!
+    @IBOutlet weak var resultHistoryTableView: UITableView!
     
     var answer: Answer = Answer()
+    var results: Array<Result> = [] {
+        didSet {
+            self.resultHistoryTableView.reloadData()
+        }
+    }
 
     override func viewDidLoad() {
 
@@ -25,13 +30,15 @@ class ViewController: UIViewController, UITextFieldDelegate {
     
     func setInput(_ input: Input) {
 
-        if let result = Result(input, self.answer) {
-            self.setResult(result)
+        guard let result = Result(input, self.answer) else {
+            return
         }
+
+        self.addResult(result)
 
     }
 
-    func setResult(_ result: Result) {
+    func addResult(_ result: Result) {
 
         if result.isCorrect() {
             self.resultLabel.text = "正解！"
@@ -39,6 +46,7 @@ class ViewController: UIViewController, UITextFieldDelegate {
         else {
             self.resultLabel.text = "\(result.eatCount)Eat \(result.biteCount)Bite";
         }
+        self.results.insert(result, at: 0)
 
     }
 
@@ -50,7 +58,7 @@ class ViewController: UIViewController, UITextFieldDelegate {
         self.resultLabel.text = ""
         self.errorLabel.text = ""
 
-        let input: Input = Input(textField.text!)
+        let input: Input = Input(textField.text!, self.answer.policy)
         if let error = input.error {
 
             self.errorLabel.text = error.toString()
@@ -62,6 +70,17 @@ class ViewController: UIViewController, UITextFieldDelegate {
         self.setInput(input)
 
         return true;
+    }
+    
+    /**
+     * UITableViewDataSource
+     */
+    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        return self.results.count
+    }
+    
+    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        return ResultView(self.results[indexPath.row])
     }
 }
 
