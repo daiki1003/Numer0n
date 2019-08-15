@@ -55,10 +55,13 @@ class ViewController: UIViewController, UITextFieldDelegate, UITableViewDataSour
      */
     func textFieldShouldReturn(_ textField: UITextField) -> Bool {
 
+        let inputStr: String = textField.text!
+        textField.text = ""
+
         self.resultLabel.text = ""
         self.errorLabel.text = ""
 
-        let input: Input = Input(textField.text!, self.answer.policy)
+        let input: Input = Input(inputStr, self.answer.policy)
         if let error = input.error {
 
             self.errorLabel.text = error.toString()
