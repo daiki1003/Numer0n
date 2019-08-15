@@ -10,11 +10,13 @@ import Foundation
 
 class Input {
 
+    var policy: Policy? = nil
     var error: InputError? = nil
     var numbers:Array<Int> = []
 
-    init(_ input: String) {
+    init(_ input: String, _ policy: Policy) {
 
+        self.policy = policy
         self.updateError(input)
 
         if error == nil {
@@ -45,16 +47,13 @@ class Input {
 
         }
         
-        for digit in 0 ..< Answer.digits {
-            for nextDigit in digit + 1 ..< Answer.digits {
-                if input[digit] == input[nextDigit] {
-                    
-                    self.error = .UnfollowedPolicy
-                    return
-                    
-                }
-            }
+        if policy!.validate(input: input) {
+
+            self.error = .UnfollowedPolicy
+            return
+
         }
+
     }
 
     subscript (index: Int) -> Int {

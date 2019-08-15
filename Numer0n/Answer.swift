@@ -13,6 +13,7 @@ class Answer {
     static var digits: Int = 4
 
     var numbers: Array<Int> = []
+    var policy: Policy = Policy(duplicatable: true)
 
     init() {
         self.generateNumbers()
@@ -29,8 +30,10 @@ class Answer {
     private func generateNumber() -> Int {
 
         let numberCandidate: Int = Int.random(in: 0 ..< 10)
-        for number in self.numbers {
-            if number == numberCandidate { return self.generateNumber() }
+        if !self.policy.duplicatable {
+            for number in self.numbers {
+                if number == numberCandidate { return self.generateNumber() }
+            }
         }
 
         return numberCandidate
