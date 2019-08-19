@@ -14,6 +14,7 @@ class ViewController: UIViewController, UITextFieldDelegate, UITableViewDataSour
     @IBOutlet weak var errorLabel: UILabel!
     @IBOutlet weak var inputTextField: UITextField!
     @IBOutlet weak var resultHistoryTableView: UITableView!
+    @IBOutlet weak var retryButton: UIButton!
     
     var answer: Answer = Answer()
     var results: Array<Result> = [] {
@@ -47,9 +48,30 @@ class ViewController: UIViewController, UITextFieldDelegate, UITableViewDataSour
             self.resultLabel.text = "\(result.eatCount)Eat \(result.biteCount)Bite";
         }
         self.results.insert(result, at: 0)
+        self.setIsCorrect(result.isCorrect())
 
     }
+    
+    func setIsCorrect(_ isCorrect: Bool) {
+        self.retryButton.isHidden = !isCorrect
+    }
 
+    @IBAction func tapButton(_ sender: Any) {
+        
+        if (sender as! UIButton) == self.retryButton {
+            self.retry()
+        }
+
+    }
+    
+    func retry() {
+        self.answer = Answer()
+        self.retryButton.isHidden = true
+        self.results.removeAll()
+        self.resultLabel.text = ""
+        self.errorLabel.text = ""
+    }
+    
     /**
      * UITextFieldDelegate
      */
