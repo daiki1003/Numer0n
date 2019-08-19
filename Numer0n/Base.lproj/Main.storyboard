@@ -62,10 +62,22 @@
                                     <outlet property="delegate" destination="BYZ-38-t0r" id="gSL-Ri-KoD"/>
                                 </connections>
                             </textField>
+                            <button hidden="YES" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="9hk-C0-vve">
+                                <rect key="frame" x="352" y="237.5" width="40" height="40"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="40" id="AD3-gh-5d9"/>
+                                    <constraint firstAttribute="height" constant="40" id="esM-1j-o6D"/>
+                                </constraints>
+                                <state key="normal" image="retry.png"/>
+                                <connections>
+                                    <action selector="tapButton:" destination="BYZ-38-t0r" eventType="touchUpInside" id="fxL-uX-g9s"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <color key="backgroundColor" red="0.90980392156862744" green="0.85882352941176465" blue="0.77254901960784317" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
                             <constraint firstItem="ccb-1C-FRK" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" id="1Ru-0t-5Ry"/>
+                            <constraint firstItem="P2j-5s-FBX" firstAttribute="trailing" secondItem="9hk-C0-vve" secondAttribute="trailing" id="5Hq-FT-TIn"/>
                             <constraint firstItem="ccb-1C-FRK" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" constant="10" id="6S6-CJ-aBp"/>
                             <constraint firstItem="P2j-5s-FBX" firstAttribute="bottom" secondItem="6Tk-OE-BBY" secondAttribute="bottom" id="Ltq-2g-IDm"/>
                             <constraint firstItem="ccb-1C-FRK" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="Paf-ZT-8Mm"/>
@@ -73,6 +85,7 @@
                             <constraint firstItem="P2j-5s-FBX" firstAttribute="top" secondItem="RyG-4d-76F" secondAttribute="bottom" constant="30" id="VFH-ww-874"/>
                             <constraint firstItem="P2j-5s-FBX" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" constant="260" id="ZjA-1C-x6O"/>
                             <constraint firstItem="s7M-WI-mkb" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="dEv-0w-cbO"/>
+                            <constraint firstItem="9hk-C0-vve" firstAttribute="centerY" secondItem="RyG-4d-76F" secondAttribute="centerY" id="p4n-7T-qHa"/>
                             <constraint firstItem="RyG-4d-76F" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="r55-0i-Eq9"/>
                             <constraint firstItem="s7M-WI-mkb" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" constant="10" id="rTV-bM-9VP"/>
                         </constraints>
@@ -83,6 +96,7 @@
                         <outlet property="inputTextField" destination="RyG-4d-76F" id="ZHR-XB-4ZM"/>
                         <outlet property="resultHistoryTableView" destination="P2j-5s-FBX" id="9yC-bC-ByN"/>
                         <outlet property="resultLabel" destination="ccb-1C-FRK" id="9rB-1v-5dO"/>
+                        <outlet property="retryButton" destination="9hk-C0-vve" id="qEp-QI-Rpp"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
@@ -90,4 +104,7 @@
             <point key="canvasLocation" x="137.68115942028987" y="72.991071428571431"/>
         </scene>
     </scenes>
+    <resources>
+        <image name="retry.png" width="491.51998901367188" height="491.51998901367188"/>
+    </resources>
 </document>
